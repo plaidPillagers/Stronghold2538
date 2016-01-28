@@ -21,7 +21,7 @@ Children:
             validators: &id003 [PWMOutput]
             value: '1'
         Base: Speed Controller
-        Name: rightMotor
+        Name: RightMotor
       - Children: []
         Properties:
           Type: !!robotbuilder.data.properties.ChoicesProperty
@@ -37,7 +37,7 @@ Children:
             validators: *id003
             value: '0'
         Base: Speed Controller
-        Name: leftMotor
+        Name: LeftMotor
       Properties:
         Left Motor Inverted: !!robotbuilder.data.properties.BooleanProperty {default: false,
           name: Left Motor Inverted, validators: null, value: false}
@@ -50,7 +50,7 @@ Children:
           name: Right Motor
           type: PIDOutput
           validators: &id006 [RobotDrive2, ChildDropdownSelected]
-          value: driveSystem rightMotor
+          value: driveSystem RightMotor
         Maximum Output: !!robotbuilder.data.properties.DoubleProperty {default: 1,
           name: Maximum Output, validators: null, value: 1.0}
         Left Motor: !!robotbuilder.data.properties.ChildSelectionProperty
@@ -58,7 +58,7 @@ Children:
           name: Left Motor
           type: PIDOutput
           validators: &id007 [RobotDrive2, ChildDropdownSelected]
-          value: driveSystem leftMotor
+          value: driveSystem LeftMotor
         Safety Expiration Time: !!robotbuilder.data.properties.DoubleProperty {default: 0.1,
           name: Safety Expiration Time, validators: null, value: 0.1}
         Safety Enabled: !!robotbuilder.data.properties.BooleanProperty {default: true,

@@ -51,14 +51,17 @@ public class lift extends Subsystem {
     public double JOYSTICK_TOLERANCE = .05;
     public boolean scissorsExtended = false;
     public void scissorsLift () {
+    	scissorsExtended = RobotMap.liftUp.get();
     	Joystick secondaryStick = Robot.oi.secondaryStick;
     	double speed = secondaryStick.getY();
     	if (scissorsExtended) {
 			scissors1.set(0.0);
 			scissors2.set(0.0);
 		}
-    	scissors2.set(minimumTolerance(speed));
-    	scissors1.set(minimumTolerance(speed));
+    	else {
+    		scissors2.set(minimumTolerance(speed));
+    		scissors1.set(minimumTolerance(speed));
+    	}
     }
     private double minimumTolerance(double magnitude) {
     	if (magnitude < JOYSTICK_TOLERANCE) {
