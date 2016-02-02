@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 
@@ -51,7 +52,7 @@ public class lift extends Subsystem {
     public double JOYSTICK_TOLERANCE = .05;
     public boolean scissorsExtended = false;
     public void scissorsLift () {
-    	scissorsExtended = RobotMap.liftUp.get();
+    	//scissorsExtended = RobotMap.liftUp.get();
     	Joystick secondaryStick = Robot.oi.secondaryStick;
     	double speed = secondaryStick.getY();
     	if (scissorsExtended) {
@@ -64,7 +65,7 @@ public class lift extends Subsystem {
     	}
     }
     private double minimumTolerance(double magnitude) {
-    	if (magnitude < JOYSTICK_TOLERANCE) {
+    	if (magnitude < JOYSTICK_TOLERANCE && magnitude > -JOYSTICK_TOLERANCE) {
 			return 0;
 		}
     	return magnitude;
