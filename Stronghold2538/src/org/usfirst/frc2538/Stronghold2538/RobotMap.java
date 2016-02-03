@@ -12,11 +12,13 @@
 package org.usfirst.frc2538.Stronghold2538;
     
 
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
@@ -33,6 +35,8 @@ public class RobotMap {
     public static SpeedController driveSystemLeftMotor;
     public static SpeedController driveSystemRightMotor;
     public static RobotDrive driveSystemRobotDrive21;
+    public static AnalogGyro driveSystemAnalogGyro;
+    public static Ultrasonic driveSystemUltrasonic;
     public static CANTalon liftscissors1;
     public static CANTalon liftscissors2;
     public static RobotDrive liftRobotDrive21;
@@ -69,6 +73,12 @@ public class RobotMap {
         driveSystemRobotDrive21.setSensitivity(0.5);
         driveSystemRobotDrive21.setMaxOutput(1.0);
 
+        driveSystemAnalogGyro = new AnalogGyro(0);
+        LiveWindow.addSensor("driveSystem", "AnalogGyro ", driveSystemAnalogGyro);
+        driveSystemAnalogGyro.setSensitivity(0.007);
+        driveSystemUltrasonic = new Ultrasonic(6, 7);
+        LiveWindow.addSensor("driveSystem", "Ultrasonic ", driveSystemUltrasonic);
+        
         liftscissors1 = new CANTalon(0);
         LiveWindow.addActuator("lift", "scissors1", liftscissors1);
         
