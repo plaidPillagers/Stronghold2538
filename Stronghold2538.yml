@@ -1007,6 +1007,81 @@ Children:
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
     Name: rortationDown
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: &id017 []
+        name: Parameter presets
+        validators: null
+        value: *id017
+      Commands: !!robotbuilder.data.properties.ListProperty
+        default: &id018 []
+        name: Commands
+        validators: *id016
+        value: *id018
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Command Group
+    Name: AutonomousCommandGroup
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: driveSystem}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: &id019 []
+        name: Parameter presets
+        validators: null
+        value: *id019
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Command
+    Name: driveStraightGyro
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: driveSystem}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: &id020 []
+        name: Parameter presets
+        validators: null
+        value: *id020
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Command
+    Name: turnGyro
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: None}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: &id021 []
+        name: Parameter presets
+        validators: null
+        value: *id021
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Command
+    Name: driveStraight
   Properties: {}
   Base: Commands
   Name: Commands
@@ -1029,7 +1104,7 @@ Properties:
   Simulation World File: !!robotbuilder.data.properties.StringProperty {default: /usr/share/frcsim/worlds/GearsBotDemo.world,
     name: Simulation World File, validators: null, value: /usr/share/frcsim/worlds/GearsBotDemo.world}
   Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-    name: Autonomous Command, type: Command, validators: null, value: Autonomous Command}
+    name: Autonomous Command, type: Command, validators: null, value: AutonomousCommandGroup}
   Autonomous command parameters: !!robotbuilder.data.properties.ParametersProperty
     default: []
     name: Autonomous command parameters
