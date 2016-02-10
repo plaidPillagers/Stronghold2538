@@ -85,10 +85,10 @@ public class BIM extends Subsystem {
 		}
     }
     public void moveUp() {
-    	bimRotation(-1.0);
+    	bimRotation(-0.25);
     }
     public void moveDown() {
-    	bimRotation(1.0);
+    	bimRotation(0.25);
     }
 }
 

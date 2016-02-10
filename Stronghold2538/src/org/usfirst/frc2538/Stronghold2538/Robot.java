@@ -11,6 +11,7 @@
 
 package org.usfirst.frc2538.Stronghold2538;
 
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Ultrasonic;
@@ -18,6 +19,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc2538.Stronghold2538.commands.*;
 import org.usfirst.frc2538.Stronghold2538.subsystems.*;
@@ -37,8 +39,7 @@ public class Robot extends IterativeRobot {
     Command autonomousCommand;
     int session;
     Image frame;
-    Ultrasonic ultra = RobotMap.driveSystemUltrasonic;
-    Gyro gyro = RobotMap.driveSystemAnalogGyro;
+    
     
 
     public static OI oi;
@@ -56,7 +57,9 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
     RobotMap.init();
-    ultra.setAutomaticMode(true); // turns on automatic mode
+  //Ultrasonic ultra = RobotMap.driveSystemUltrasonic;
+    RobotMap.gyro.reset();
+   // ultra.setAutomaticMode(true); // turns on automatic mode
     frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
 
     // the camera name (ex "cam0") can be found through the roborio web interface
@@ -99,7 +102,6 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         // schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
-        gyro.reset();
     }
 
     /**
@@ -116,6 +118,7 @@ public class Robot extends IterativeRobot {
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
         NIVision.IMAQdxStartAcquisition(session);
+        
     }
 
     /**
@@ -126,6 +129,8 @@ public class Robot extends IterativeRobot {
         NIVision.IMAQdxGrab(session, frame, 1);
         
         CameraServer.getInstance().setImage(frame);
+        ADXRS450_Gyro gyro = RobotMap.gyro;
+        SmartDashboard.putDouble("angle", gyro.getAngle());
     }
 
     /**
