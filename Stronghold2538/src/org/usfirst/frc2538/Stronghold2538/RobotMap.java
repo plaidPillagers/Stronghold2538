@@ -24,6 +24,7 @@ import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Ultrasonic;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
@@ -44,8 +45,8 @@ public class RobotMap {
     public static CANTalon driveSystemRightFrontMotor;
     public static CANTalon driveSystemRightRearMotor;
     public static RobotDrive driveSystemRobotDrive41;
-    public static CANTalon liftscissors1;
-    public static CANTalon liftscissors2;
+    public static SpeedController liftscissors1;
+    public static SpeedController liftscissors2;
     public static RobotDrive liftRobotDrive21;
     public static DigitalInput liftUp;
     public static DigitalInput liftDown;
@@ -97,11 +98,11 @@ public class RobotMap {
         driveSystemRobotDrive41.setSensitivity(0.5);
         driveSystemRobotDrive41.setMaxOutput(1.0);
 
-        liftscissors1 = new CANTalon(4);
-        LiveWindow.addActuator("lift", "scissors1", liftscissors1);
+        liftscissors1 = new Victor(0);
+        LiveWindow.addActuator("lift", "scissors1", (Victor) liftscissors1);
         
-        liftscissors2 = new CANTalon(8);
-        LiveWindow.addActuator("lift", "scissors2", liftscissors2);
+        liftscissors2 = new Victor(1);
+        LiveWindow.addActuator("lift", "scissors2", (Victor) liftscissors2);
         
         liftRobotDrive21 = new RobotDrive(liftscissors1, liftscissors2);
         

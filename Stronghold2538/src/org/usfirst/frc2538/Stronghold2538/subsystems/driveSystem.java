@@ -105,6 +105,7 @@ public class driveSystem extends Subsystem {
 		//ultraRange = ultrasonic.getRangeInches();
 		SmartDashboard.putDouble("analogGyro", angle);
 		SmartDashboard.putDouble("ultrasonic", ultraRange);
+		//remove gyro
 		if (ultraRange > ultraForwardRange) {	
 			robotDrive41.arcadeDrive(-0.5, -angle * gyroScaling);
 			return false;
@@ -112,6 +113,9 @@ public class driveSystem extends Subsystem {
 		else{
 			return true;
 		}
+	}
+	public void resetGyro() {
+		gyro.reset();
 	}
 	public boolean autoGyroTurn() {
 		angle = gyro.getAngle();

@@ -164,23 +164,36 @@ Children:
     - Children:
       - Children: []
         Properties:
-          CAN ID: !!robotbuilder.data.properties.ChoicesProperty
-            choices: *id001
-            default: '2'
-            name: CAN ID
-            validators: *id002
-            value: '4'
-        Base: CAN Talon
+          Type: !!robotbuilder.data.properties.ChoicesProperty
+            choices: &id003 [Victor, Jaguar, Talon, VictorSP, TalonSRX, Spark, SD540]
+            default: Talon
+            name: Type
+            validators: null
+            value: Victor
+          Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
+            choices: &id004 ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+              '11', '12', '13', '14', '15', '16', '17', '18', '19']
+            default: '0'
+            name: Output Channel (PWM)
+            validators: &id005 [PWMOutput]
+            value: '0'
+        Base: Speed Controller
         Name: scissors1
       - Children: []
         Properties:
-          CAN ID: !!robotbuilder.data.properties.ChoicesProperty
-            choices: *id001
-            default: '2'
-            name: CAN ID
-            validators: *id002
-            value: '8'
-        Base: CAN Talon
+          Type: !!robotbuilder.data.properties.ChoicesProperty
+            choices: *id003
+            default: Talon
+            name: Type
+            validators: null
+            value: Victor
+          Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
+            choices: *id004
+            default: '0'
+            name: Output Channel (PWM)
+            validators: *id005
+            value: '1'
+        Base: Speed Controller
         Name: scissors2
       Properties:
         Left Motor Inverted: !!robotbuilder.data.properties.BooleanProperty {default: false,
@@ -212,22 +225,22 @@ Children:
     - Children: []
       Properties:
         Input Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: &id003 ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+          choices: &id006 ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
             '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22',
             '23', '24', '25']
           default: '0'
           name: Input Channel (Digital)
-          validators: &id004 [DigitalChannel]
+          validators: &id007 [DigitalChannel]
           value: '0'
       Base: Limit Switch
       Name: Up
     - Children: []
       Properties:
         Input Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id003
+          choices: *id006
           default: '0'
           name: Input Channel (Digital)
-          validators: *id004
+          validators: *id007
           value: '1'
       Base: Limit Switch
       Name: Down
@@ -251,33 +264,32 @@ Children:
       - Children: []
         Properties:
           Type: !!robotbuilder.data.properties.ChoicesProperty
-            choices: &id005 [Victor, Jaguar, Talon, VictorSP, TalonSRX, Spark, SD540]
+            choices: *id003
             default: Talon
             name: Type
             validators: null
             value: Talon
           Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
-            choices: &id006 ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
-              '11', '12', '13', '14', '15', '16', '17', '18', '19']
+            choices: *id004
             default: '0'
             name: Output Channel (PWM)
-            validators: &id007 [PWMOutput]
+            validators: *id005
             value: '3'
         Base: Speed Controller
         Name: BIMwheels
       - Children: []
         Properties:
           Type: !!robotbuilder.data.properties.ChoicesProperty
-            choices: *id005
+            choices: *id003
             default: Talon
             name: Type
             validators: null
             value: Talon
           Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
-            choices: *id006
+            choices: *id004
             default: '0'
             name: Output Channel (PWM)
-            validators: *id007
+            validators: *id005
             value: '2'
         Base: Speed Controller
         Name: BIMwheels2
@@ -312,32 +324,32 @@ Children:
       - Children: []
         Properties:
           Type: !!robotbuilder.data.properties.ChoicesProperty
-            choices: *id005
+            choices: *id003
             default: Talon
             name: Type
             validators: null
             value: VictorSP
           Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
-            choices: *id006
+            choices: *id004
             default: '0'
             name: Output Channel (PWM)
-            validators: *id007
+            validators: *id005
             value: '8'
         Base: Speed Controller
         Name: BIMmove
       - Children: []
         Properties:
           Type: !!robotbuilder.data.properties.ChoicesProperty
-            choices: *id005
+            choices: *id003
             default: Talon
             name: Type
             validators: null
             value: Talon
           Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
-            choices: *id006
+            choices: *id004
             default: '0'
             name: Output Channel (PWM)
-            validators: *id007
+            validators: *id005
             value: '9'
         Base: Speed Controller
         Name: Speed Controller 2
@@ -371,20 +383,20 @@ Children:
     - Children: []
       Properties:
         Input Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id003
+          choices: *id006
           default: '0'
           name: Input Channel (Digital)
-          validators: *id004
+          validators: *id007
           value: '4'
       Base: Limit Switch
       Name: bimDown
     - Children: []
       Properties:
         Input Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id003
+          choices: *id006
           default: '0'
           name: Input Channel (Digital)
-          validators: *id004
+          validators: *id007
           value: '5'
       Base: Limit Switch
       Name: bimUp
@@ -408,32 +420,32 @@ Children:
       - Children: []
         Properties:
           Type: !!robotbuilder.data.properties.ChoicesProperty
-            choices: *id005
+            choices: *id003
             default: Talon
             name: Type
             validators: null
             value: VictorSP
           Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
-            choices: *id006
+            choices: *id004
             default: '0'
             name: Output Channel (PWM)
-            validators: *id007
+            validators: *id005
             value: '4'
         Base: Speed Controller
         Name: ArmScrew
       - Children: []
         Properties:
           Type: !!robotbuilder.data.properties.ChoicesProperty
-            choices: *id005
+            choices: *id003
             default: Talon
             name: Type
             validators: null
             value: VictorSP
           Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
-            choices: *id006
+            choices: *id004
             default: '0'
             name: Output Channel (PWM)
-            validators: *id007
+            validators: *id005
             value: '5'
         Base: Speed Controller
         Name: ArmExtension
@@ -467,20 +479,20 @@ Children:
     - Children: []
       Properties:
         Input Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id003
+          choices: *id006
           default: '0'
           name: Input Channel (Digital)
-          validators: *id004
+          validators: *id007
           value: '2'
       Base: Limit Switch
       Name: Sheniqua
     - Children: []
       Properties:
         Input Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id003
+          choices: *id006
           default: '0'
           name: Input Channel (Digital)
-          validators: *id004
+          validators: *id007
           value: '3'
       Base: Limit Switch
       Name: Josh
