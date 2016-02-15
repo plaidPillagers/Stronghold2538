@@ -74,14 +74,22 @@ public class BIM extends Subsystem {
     public void bimRotation(double speed) {
     	bimLowered = RobotMap.bIMbimDown.get();
     	bimRaised = RobotMap.bIMbimUp.get();
-    	if (bimLowered) {
-			bIMmove.set(0.0);
-		}
-    	else if (bimRaised) {
-			bIMmove.set(0);
+    	if (speed < 0) {
+    		if (bimRaised) {
+    			bIMmove.set(0);
+    		}
+    		else {
+				bIMmove.set(speed);
+			}
+				
 		}
     	else {
-			bIMmove.set(speed);
+			if (bimLowered) {
+				bIMmove.set(0);
+			}
+			else {
+				bIMmove.set(speed);
+			}
 		}
     }
     public void moveUp() {

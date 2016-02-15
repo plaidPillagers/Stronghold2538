@@ -57,13 +57,22 @@ public class lift extends Subsystem {
     	scissorsRetracted = RobotMap.liftDown.get();
     	Joystick secondaryStick = Robot.oi.secondaryStick;
     	double speed = secondaryStick.getY();
-    	//change this to check direction of joystick, incase limit switch gets stuck
-    	if (scissorsExtended || scissorsRetracted) {
-			scissors1.set(0.0);
-		}
-    	else {
-    		scissors1.set(minimumTolerance(speed));
+    	if (speed < 0) {
+    		if (scissorsRetracted) {
+    			scissors1.set(0.0);
+    		}
+    		else {
+				scissors1.set(speed);
+    		}
     	}
+    	else {
+			if (scissorsExtended) {
+				scissors1.set(0);
+			}
+			else {
+				scissors1.set(speed);
+			}
+		}			
     }
     private double minimumTolerance(double magnitude) {
     	if (magnitude < JOYSTICK_TOLERANCE && magnitude > -JOYSTICK_TOLERANCE) {
