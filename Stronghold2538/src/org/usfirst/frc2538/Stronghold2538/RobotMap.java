@@ -55,8 +55,8 @@ public class RobotMap {
     public static SpeedController bIMBIMwheels;
     public static SpeedController bIMBIMwheels2;
     public static RobotDrive bIMRobotDrive21;
-    public static SpeedController bIMBIMmove;
     public static SpeedController bIMSpeedController2;
+    public static SpeedController bIMBIMmove;
     public static RobotDrive bIMRobotDrive22;
     public static DigitalInput bIMbimDown;
     public static DigitalInput bIMbimUp;
@@ -120,7 +120,7 @@ public class RobotMap {
         bIMBIMwheels = new Talon(3);
         LiveWindow.addActuator("BIM", "BIMwheels", (Talon) bIMBIMwheels);
         
-        bIMBIMwheels2 = new Talon(2);
+        bIMBIMwheels2 = new Talon(15);
         LiveWindow.addActuator("BIM", "BIMwheels2", (Talon) bIMBIMwheels2);
         
         bIMRobotDrive21 = new RobotDrive(bIMBIMwheels2, bIMBIMwheels);
@@ -130,13 +130,13 @@ public class RobotMap {
         bIMRobotDrive21.setSensitivity(0.5);
         bIMRobotDrive21.setMaxOutput(1.0);
 
-        bIMBIMmove = new VictorSP(15);
-        LiveWindow.addActuator("BIM", "BIMmove", (VictorSP) bIMBIMmove);
-        
         bIMSpeedController2 = new Talon(9);
         LiveWindow.addActuator("BIM", "Speed Controller 2", (Talon) bIMSpeedController2);
         
-        bIMRobotDrive22 = new RobotDrive(bIMBIMmove, bIMSpeedController2);
+        bIMBIMmove = new Victor(2);
+        LiveWindow.addActuator("BIM", "BIMmove", (Victor) bIMBIMmove);
+        
+        bIMRobotDrive22 = new RobotDrive(bIMSpeedController2, bIMBIMmove);
         
         bIMRobotDrive22.setSafetyEnabled(true);
         bIMRobotDrive22.setExpiration(0.1);

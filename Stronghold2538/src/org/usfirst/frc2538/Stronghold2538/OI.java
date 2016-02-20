@@ -71,9 +71,9 @@ public class OI {
         secondaryStick = new Joystick(1);
         
         moveBIMDown = new JoystickButton(secondaryStick, 11);
-        moveBIMDown.whenPressed(new rortationDown());
+        moveBIMDown.whileHeld(new rortationDown());
         moveBIMUp = new JoystickButton(secondaryStick, 12);
-        moveBIMUp.whenPressed(new rotationUp());
+        moveBIMUp.whileHeld(new rotationUp());
         armScrew = new JoystickButton(secondaryStick, 2);
         armScrew.whileHeld(new Arm());
         wheelStop = new JoystickButton(secondaryStick, 4);

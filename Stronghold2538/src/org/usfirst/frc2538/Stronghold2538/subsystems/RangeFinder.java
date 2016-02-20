@@ -11,7 +11,6 @@
 
 package org.usfirst.frc2538.Stronghold2538.subsystems;
 
-import java.sql.Time;
 
 import org.usfirst.frc2538.Stronghold2538.RobotMap;
 import org.usfirst.frc2538.Stronghold2538.commands.*;
@@ -19,6 +18,7 @@ import org.usfirst.frc2538.Stronghold2538.commands.*;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /**
@@ -60,8 +60,8 @@ public class RangeFinder extends Subsystem {
 	public boolean successfulRead;
 
 	// register addresses, must be in hexadecimle
-	private static int writeRegisterAddress = 0xE0; //224
-	private static int readRegisterAddress = 0xE1; //225
+	private static int writeRegisterAddress = 0xE0; //224//0x70
+	private static int readRegisterAddress = 0xE1; //225//0x70
 	
 	// write commands
 	private static int writeData = 81;
@@ -70,9 +70,14 @@ public class RangeFinder extends Subsystem {
 	// read commands
 
 
+
 	public RangeFinder() {
 		//224 came from past code it may need to be in hex
 		newRangeFinder = new I2C(I2C.Port.kOnboard, writeRegisterAddress);
+		SmartDashboard.putBoolean("ultrasonic connected", isConnected());
+	}
+	public boolean isConnected() {
+		return newRangeFinder.addressOnly();
 	}
 
 

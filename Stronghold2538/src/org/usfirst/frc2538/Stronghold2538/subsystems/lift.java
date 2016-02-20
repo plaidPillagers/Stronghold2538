@@ -21,6 +21,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /**
@@ -57,20 +58,26 @@ public class lift extends Subsystem {
     	scissorsRetracted = RobotMap.liftDown.get();
     	Joystick secondaryStick = Robot.oi.secondaryStick;
     	double speed = secondaryStick.getY();
-    	if (speed < 0) {
+    	if (speed > 0) {
     		if (scissorsRetracted) {
     			scissors1.set(0.0);
+    			scissors2.set(0.0);
+    			SmartDashboard.putString("scissors", "stopped");
     		}
     		else {
-				scissors1.set(speed);
+				scissors1.set(-1.0);
+				scissors2.set(-.8);
     		}
     	}
     	else {
 			if (scissorsExtended) {
 				scissors1.set(0);
+				scissors2.set(0);
+				SmartDashboard.putString("scissors", "stopped2");
 			}
 			else {
-				scissors1.set(speed);
+				scissors1.set(1.0);
+				scissors2.set(1.0);
 			}
 		}			
     }

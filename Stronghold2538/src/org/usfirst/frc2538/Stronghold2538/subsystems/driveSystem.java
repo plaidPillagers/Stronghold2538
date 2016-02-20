@@ -18,7 +18,6 @@ import org.usfirst.frc2538.Stronghold2538.commands.*;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Ultrasonic;
@@ -70,13 +69,13 @@ public class driveSystem extends Subsystem {
 //    static RobotDrive drive;
 	public void arcadeDriveSystem(){
 		Joystick driveJoystick = Robot.oi.driveStick;
-		Joystick secondaryStick = Robot.oi.secondaryStick;
 		double yValue = driveJoystick.getY();
 		double xValue = driveJoystick.getX();
 		double direction = driveJoystick.getDirectionDegrees();
 		double throttle = driveJoystick.getZ() * (-.25) + .75;
 		SmartDashboard.putDouble("y", yValue);
 		SmartDashboard.putDouble("x", xValue);
+		SmartDashboard.putDouble("encoder value", encoder1.getDistance());
 		//getThrottle is actually getZ on madcats joystick
 		robotDrive41.arcadeDrive(backwards(minimumTolerance(yValue)) * throttle, reverseTurn(minimumTolerance(xValue)) * throttle);
 		
@@ -120,8 +119,9 @@ public class driveSystem extends Subsystem {
 	}
 	public boolean autoGyroTurn() {
 		angle = gyro.getAngle();
+		SmartDashboard.putDouble("gyroTurnAngle", angle);
 		if (angle < turnAngle) {
-			robotDrive41.arcadeDrive(0.0, turnSpeed);
+			robotDrive41.arcadeDrive(0.0, .6);
 			return false;
 		}
 		else {
