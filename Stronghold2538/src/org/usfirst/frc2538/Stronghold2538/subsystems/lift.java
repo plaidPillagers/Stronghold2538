@@ -66,7 +66,7 @@ public class lift extends Subsystem {
     		}
     		else {
 				scissors1.set(-1.0);
-				scissors2.set(-.8);
+				scissors2.set(-.95);
     		}
     	}
     	else {
@@ -80,6 +80,9 @@ public class lift extends Subsystem {
 				scissors2.set(1.0);
 			}
 		}			
+    }
+    public void leftScissors() {
+    	
     }
     private double minimumTolerance(double magnitude) {
     	if (magnitude < JOYSTICK_TOLERANCE && magnitude > -JOYSTICK_TOLERANCE) {

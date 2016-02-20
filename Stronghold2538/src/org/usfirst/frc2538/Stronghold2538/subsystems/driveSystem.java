@@ -69,6 +69,7 @@ public class driveSystem extends Subsystem {
 //    static RobotDrive drive;
 	public void arcadeDriveSystem(){
 		Joystick driveJoystick = Robot.oi.driveStick;
+		encoderDistance = encoder1.getDistance();
 		double yValue = driveJoystick.getY();
 		double xValue = driveJoystick.getX();
 		double direction = driveJoystick.getDirectionDegrees();
@@ -77,7 +78,7 @@ public class driveSystem extends Subsystem {
 		SmartDashboard.putDouble("x", xValue);
 		SmartDashboard.putDouble("encoder value", encoder1.getDistance());
 		//getThrottle is actually getZ on madcats joystick
-		robotDrive41.arcadeDrive(backwards(minimumTolerance(yValue)) * throttle, reverseTurn(minimumTolerance(xValue)) * throttle);
+		robotDrive41.arcadeDrive(-(backwards(minimumTolerance(yValue)) * throttle), reverseTurn(minimumTolerance(xValue)) * throttle);
 		
 	}
 	private double minimumTolerance(double magnitude) {
@@ -145,7 +146,7 @@ public class driveSystem extends Subsystem {
 	public boolean autoGoalEncoders() {
 		encoderDistance = encoder1.getDistance();
 		if (encoderDistance < distanceToGoal) {
-			robotDrive41.arcadeDrive(.3, 0.0);
+			robotDrive41.arcadeDrive(.5, 0.0);
 			return false;
 		}
 		else {
@@ -156,7 +157,7 @@ public class driveSystem extends Subsystem {
 	public boolean autoStraightEncoders() {
 		encoderDistance = encoder1.getDistance();
 		if (encoderDistance < distanceToTurn) {
-			robotDrive41.arcadeDrive(.3, 0.0);
+			robotDrive41.arcadeDrive(.6, 0.0);
 			return false;
 		}
 		else {
