@@ -42,6 +42,31 @@
   * It's a thing!
 7. **BIM-Stop** (Medium priority)
   * Is also a thing! 
-
+8. **Drawbidge** (Low priority)
+  * This needs to get built on or deleated
+9. **Invert** (High priority)
+  * Is a thing!
+10. **Sallyport** (Low priority)
+  * Is empty
+11. **arcadeDrive** (Done)
+  * Yep
+12. **armLowerScrew** (Low priority)
+  * Is empty
+13. **armRotate** (Low priority)
+  * Is empty
+14. **armRotateExtension** (Low priority)
+  * Is empty
+15. **autoBIM-Eject** (Medium priority)
+  * Is empty
+16. **autonomousToGoal** (Medium priority)
+  * Straight line driving using encoders
+17. **driveStraight** (Medium priority)
+  * Is a thing, should work? I wonder about not stopping DriveSystem.autoDriveForward
+  * Uses Ultrasonic Rangefinders
+18. **driveStraightGyro** (Medium priority)
+  * Tis a thing, same format as driveStraight
+19. **driveStraightWithEncoder** (Medium priority)
+  * Follows the same structure as the rest of the driveStraight's
+  * Resets an encoder in end
   
   
