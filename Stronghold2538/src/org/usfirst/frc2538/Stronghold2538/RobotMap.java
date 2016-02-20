@@ -47,19 +47,18 @@ public class RobotMap {
     public static CANTalon driveSystemRightFrontMotor;
     public static CANTalon driveSystemRightRearMotor;
     public static RobotDrive driveSystemRobotDrive41;
-    public static SpeedController liftscissors1;
-    public static SpeedController liftscissors2;
+    public static SpeedController liftscissorsRight;
+    public static SpeedController liftscissorsLeft;
     public static RobotDrive liftRobotDrive21;
-    public static DigitalInput liftUp;
-    public static DigitalInput liftDown;
+    public static DigitalInput liftRightUp;
+    public static DigitalInput liftRightDown;
+    public static DigitalInput liftLeftUp;
+    public static DigitalInput liftLeftDown;
     public static SpeedController bIMBIMwheels;
-    public static SpeedController bIMBIMwheels2;
-    public static RobotDrive bIMRobotDrive21;
-    public static SpeedController bIMSpeedController2;
     public static SpeedController bIMBIMmove;
-    public static RobotDrive bIMRobotDrive22;
-    public static DigitalInput bIMbimDown;
-    public static DigitalInput bIMbimUp;
+    public static RobotDrive bIMRobotDrive21;
+    public static DigitalInput bIMbimIn;
+    public static DigitalInput bIMbimOut;
     public static SpeedController armArmScrew;
     public static SpeedController armArmExtension;
     public static RobotDrive armRobotDrive21;
@@ -98,56 +97,49 @@ public class RobotMap {
         driveSystemRobotDrive41.setSensitivity(0.5);
         driveSystemRobotDrive41.setMaxOutput(1.0);
 
-        liftscissors1 = new Victor(0);
-        LiveWindow.addActuator("lift", "scissors1", (Victor) liftscissors1);
+        liftscissorsRight = new Victor(0);
+        LiveWindow.addActuator("lift", "scissorsRight", (Victor) liftscissorsRight);
         
-        liftscissors2 = new Victor(1);
-        LiveWindow.addActuator("lift", "scissors2", (Victor) liftscissors2);
+        liftscissorsLeft = new Victor(1);
+        LiveWindow.addActuator("lift", "scissorsLeft", (Victor) liftscissorsLeft);
         
-        liftRobotDrive21 = new RobotDrive(liftscissors1, liftscissors2);
+        liftRobotDrive21 = new RobotDrive(liftscissorsRight, liftscissorsLeft);
         
         liftRobotDrive21.setSafetyEnabled(true);
         liftRobotDrive21.setExpiration(0.1);
         liftRobotDrive21.setSensitivity(0.5);
         liftRobotDrive21.setMaxOutput(1.0);
 
-        liftUp = new DigitalInput(0);
-        LiveWindow.addSensor("lift", "Up", liftUp);
+        liftRightUp = new DigitalInput(0);
+        LiveWindow.addSensor("lift", "RightUp", liftRightUp);
         
-        liftDown = new DigitalInput(1);
-        LiveWindow.addSensor("lift", "Down", liftDown);
+        liftRightDown = new DigitalInput(1);
+        LiveWindow.addSensor("lift", "RightDown", liftRightDown);
+        
+        liftLeftUp = new DigitalInput(6);
+        LiveWindow.addSensor("lift", "LeftUp", liftLeftUp);
+        
+        liftLeftDown = new DigitalInput(7);
+        LiveWindow.addSensor("lift", "LeftDown", liftLeftDown);
         
         bIMBIMwheels = new Talon(3);
         LiveWindow.addActuator("BIM", "BIMwheels", (Talon) bIMBIMwheels);
         
-        bIMBIMwheels2 = new Talon(15);
-        LiveWindow.addActuator("BIM", "BIMwheels2", (Talon) bIMBIMwheels2);
+        bIMBIMmove = new Victor(2);
+        LiveWindow.addActuator("BIM", "BIMmove", (Victor) bIMBIMmove);
         
-        bIMRobotDrive21 = new RobotDrive(bIMBIMwheels2, bIMBIMwheels);
+        bIMRobotDrive21 = new RobotDrive(bIMBIMmove, bIMBIMwheels);
         
         bIMRobotDrive21.setSafetyEnabled(true);
         bIMRobotDrive21.setExpiration(0.1);
         bIMRobotDrive21.setSensitivity(0.5);
         bIMRobotDrive21.setMaxOutput(1.0);
 
-        bIMSpeedController2 = new Talon(9);
-        LiveWindow.addActuator("BIM", "Speed Controller 2", (Talon) bIMSpeedController2);
+        bIMbimIn = new DigitalInput(4);
+        LiveWindow.addSensor("BIM", "bimIn", bIMbimIn);
         
-        bIMBIMmove = new Victor(2);
-        LiveWindow.addActuator("BIM", "BIMmove", (Victor) bIMBIMmove);
-        
-        bIMRobotDrive22 = new RobotDrive(bIMSpeedController2, bIMBIMmove);
-        
-        bIMRobotDrive22.setSafetyEnabled(true);
-        bIMRobotDrive22.setExpiration(0.1);
-        bIMRobotDrive22.setSensitivity(0.5);
-        bIMRobotDrive22.setMaxOutput(1.0);
-
-        bIMbimDown = new DigitalInput(4);
-        LiveWindow.addSensor("BIM", "bimDown", bIMbimDown);
-        
-        bIMbimUp = new DigitalInput(5);
-        LiveWindow.addSensor("BIM", "bimUp", bIMbimUp);
+        bIMbimOut = new DigitalInput(5);
+        LiveWindow.addSensor("BIM", "bimOut", bIMbimOut);
         
         armArmScrew = new VictorSP(4);
         LiveWindow.addActuator("arm", "ArmScrew", (VictorSP) armArmScrew);
