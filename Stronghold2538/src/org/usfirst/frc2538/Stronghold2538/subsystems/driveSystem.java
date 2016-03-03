@@ -53,8 +53,8 @@ public class driveSystem extends Subsystem {
    public final double turnSpeed = .25;
    public final double goalRange = 5;
    public double encoderDistance = 0;
-   public final double distanceToGoal = -130;
-   public final double distanceToTurn = -215.8;
+   public double distanceToGoal = -130;
+   public double distanceToTurn = -215.8;
    public double ultraDistance = 0;
   
     // Put methods for controlling this subsystem
@@ -130,7 +130,7 @@ public class driveSystem extends Subsystem {
 		angle = gyro.getAngle();
 		SmartDashboard.putDouble("gyroTurnAngle", angle);
 		if (angle < rightTurnAngle) {
-			robotDrive41.arcadeDrive(0.0, .6);
+			robotDrive41.arcadeDrive(0.0, .8);
 			return false;
 		}
 		else {
@@ -145,7 +145,7 @@ public class driveSystem extends Subsystem {
 		SmartDashboard.putDouble("gyroTurnAngle", angle);
 		if (angle > leftTurnAngle) {
 			//check how to turn left
-			robotDrive41.arcadeDrive(0.0, -.6);
+			robotDrive41.arcadeDrive(0.0, -.8);
 			return false;
 		}
 		else {
@@ -171,7 +171,7 @@ public class driveSystem extends Subsystem {
 	}
 	public boolean autoGoalEncoders() {
 		encoderDistance = encoder1.getDistance()*.876;
-		if (encoderDistance < distanceToGoal) {
+		if (encoderDistance > distanceToGoal) {
 			robotDrive41.arcadeDrive(-.65, 0.0);
 			return false;
 		}
@@ -192,5 +192,16 @@ public class driveSystem extends Subsystem {
 			SmartDashboard.putDouble("drive stopped encoder", encoderDistance);
 			return true;
 		}
+	}
+	public void setDistanceBeforeTurn(double distanceBeforeTurn) {
+		distanceToTurn = distanceBeforeTurn;
+		
+		// TODO Auto-generated method stub
+		
+	}
+	public void setDistanceToGoal(double distanceToGoal2) {
+		distanceToGoal = distanceToGoal2;
+		// TODO Auto-generated method stub
+		
 	}
 }

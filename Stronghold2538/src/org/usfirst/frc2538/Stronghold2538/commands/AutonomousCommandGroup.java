@@ -50,18 +50,20 @@ public class AutonomousCommandGroup extends CommandGroup {
     	double speed = Double.valueOf(input);
     	int driveTime = Robot.prefs.getInt("driveTime", 5);
     	double angle = Robot.prefs.getDouble("angle", 43);
-    	addSequential(new driveStraightWithEncoder(speed), driveTime); //timed out for testing purposes only
+    	double distanceBeforeTurn = Robot.prefs.getDouble("distanceBeforeTurn", -215.8);
+    	double distanceToGoal = Robot.prefs.getDouble("distanceToGoal", -130);
+    	addSequential(new driveStraightWithEncoder(speed, distanceBeforeTurn), driveTime); //timed out for testing purposes only
     	addSequential(new stopDriving(), 1.5);
     	if (angle > 0) {
-    		addSequential(new turnRightGyro(angle));	
+    		addSequential(new turnRightGyro(angle), 5);	
     	}
     	else {
-    		addSequential(new turnLeftGyro(angle));
+    		addSequential(new turnLeftGyro(angle), 5);
     	}
     	
     	addSequential(new stopDriving(), 1.5);
     		//addSequential(new driveStraight()); //uses ultrasonic sensor
-    	addSequential(new autonomousToGoal(), 2.5); //encoders, timed out for testing purposes only
+    	addSequential(new autonomousToGoal(distanceToGoal), 2.5); //encoders, timed out for testing purposes only
     	//addSequential(new stopDriving(), 1.5);
     	addSequential(new autoBIMEject(), 1);
     	
