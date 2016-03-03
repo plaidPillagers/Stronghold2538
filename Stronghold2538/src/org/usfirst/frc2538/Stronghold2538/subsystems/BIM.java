@@ -54,8 +54,8 @@ public class BIM extends Subsystem {
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
     }
-    public double intakeSpeed = 1;
-    public double ejectSpeed = -1;
+    public double intakeSpeed = -1;
+    public double ejectSpeed = 1;
     public boolean bimLowered = false;
     public boolean bimRaised = false;
     public void wheelIntake() {
@@ -63,38 +63,38 @@ public class BIM extends Subsystem {
     }
     public void wheelEject() {
     	bIMwheels.set(ejectSpeed);
+    	SmartDashboard.putDouble("eject speed", ejectSpeed);
     }
     public void wheelStop() {
     	bIMwheels.set(0.0);
+    	//SmartDashboard.putDouble("bim wheels",);
     }
     public void bimRotation(double speed) {
     	bimLowered = RobotMap.bIMbimIn.get();
-    	bimRaised = RobotMap.bIMbimOut.get();
-    	if (speed < 0) {
-    		if (!bimRaised) {
-    			bIMmove.set(0);
-    			SmartDashboard.putBoolean("bimRaised", bimRaised);
-    		}
-    		else {
-				bIMmove.set(speed);
-			}				
+    	bIMmove.set(speed);
+    	/*
+    	if (speed > 0) {
+				bIMmove.set(speed);				
 		}
+    	
     	else {
 			if (bimLowered) {
 				bIMmove.set(0);
 				SmartDashboard.putBoolean("bimLowered", bimLowered);
 			}
 			else {
+			
 				bIMmove.set(speed);
-			}
+    		}
 		}
+		*/
     }
     
     public void moveOut() {
-    	bimRotation(-0.25);
+    	bimRotation(0.25);
     }
     public void moveIn() {
-    	bimRotation(0.25);
+    	bimRotation(-1.0);
     }
 }
 
