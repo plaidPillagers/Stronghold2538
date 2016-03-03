@@ -12,6 +12,7 @@
 package org.usfirst.frc2538.Stronghold2538.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc2538.Stronghold2538.Robot;
 import org.usfirst.frc2538.Stronghold2538.RobotMap;

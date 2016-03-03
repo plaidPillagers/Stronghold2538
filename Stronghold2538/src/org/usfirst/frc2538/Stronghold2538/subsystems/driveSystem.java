@@ -53,8 +53,8 @@ public class driveSystem extends Subsystem {
    public final double turnSpeed = .25;
    public final double goalRange = 5;
    public double encoderDistance = 0;
-   public final double distanceToGoal = 130;
-   public final double distanceToTurn = 215.8;
+   public final double distanceToGoal = -130;
+   public final double distanceToTurn = -215.8;
    public double ultraDistance = 0;
   
     // Put methods for controlling this subsystem
@@ -73,15 +73,15 @@ public class driveSystem extends Subsystem {
 //    static RobotDrive drive;
 	public void arcadeDriveSystem(){
 		Joystick driveJoystick = Robot.oi.driveStick;
-		encoderDistance = encoder1.getDistance();
+		//encoderDistance = encoder1.getDistance();
 		double yValue = driveJoystick.getY();
 		double xValue = driveJoystick.getX();
 		double throttle = driveJoystick.getZ() * (-.25) + .75;
 		SmartDashboard.putDouble("y", yValue);
 		SmartDashboard.putDouble("x", xValue);
-		//SmartDashboard.putDouble("encoder value", encoder1.getDistance()*.876);
+		SmartDashboard.putDouble("encoder value", encoder1.getDistance()*.876);
 		//ultraDistance = ultrasonic.getAverageVoltage() / .0098;
-		SmartDashboard.putDouble("ultraDistance", ultraDistance);
+		//SmartDashboard.putDouble("ultraDistance", ultraDistance);
 		//getThrottle is actually getZ on madcats joystick
 		robotDrive41.arcadeDrive((backwards(minimumTolerance(yValue)) * throttle), reverseTurn(minimumTolerance(xValue)) * throttle);
 		
@@ -182,13 +182,14 @@ public class driveSystem extends Subsystem {
 	}
 	public boolean autoStraightEncoders(double speed) {
 		encoderDistance = encoder1.getDistance()*.876;
-		if (encoderDistance < distanceToTurn) {
-			SmartDashboard.putDouble("drive straight encoder", encoderDistance);
+		if (encoderDistance > distanceToTurn) {
+			SmartDashboard.putDouble("drivestraight encoder", encoderDistance);
 			robotDrive41.arcadeDrive(speed, 0.0);
 			return false;
 		}
 		else {
 			robotDrive41.arcadeDrive(0.0, 0.0);
+			SmartDashboard.putDouble("drive stopped encoder", encoderDistance);
 			return true;
 		}
 	}
