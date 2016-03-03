@@ -48,7 +48,8 @@ public class driveSystem extends Subsystem {
    public double angle = 0;
    public final double gyroScaling = .03; 
    public final double ultraForwardRange = 77.65;
-   public final double turnAngle = 43;
+   public double rightTurnAngle = 43;
+   public double leftTurnAngle = -35;
    public final double turnSpeed = .25;
    public final double goalRange = 5;
    public double encoderDistance = 0;
@@ -122,11 +123,29 @@ public class driveSystem extends Subsystem {
 	public void resetGyro() {
 		gyro.reset();
 	}
-	public boolean autoGyroTurn() {
+	public void setRightAngle(double angle) {
+		rightTurnAngle = angle;
+	}
+	public boolean autoGyroRightTurn() {
 		angle = gyro.getAngle();
 		SmartDashboard.putDouble("gyroTurnAngle", angle);
-		if (angle < turnAngle) {
+		if (angle < rightTurnAngle) {
 			robotDrive41.arcadeDrive(0.0, .6);
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+	public void setLeftAngle(double angle) {
+		leftTurnAngle = angle;
+	}
+	public boolean autoGyroLeftTurn() {
+		angle = gyro.getAngle();
+		SmartDashboard.putDouble("gyroTurnAngle", angle);
+		if (angle > leftTurnAngle) {
+			//check how to turn left
+			robotDrive41.arcadeDrive(0.0, -.6);
 			return false;
 		}
 		else {
