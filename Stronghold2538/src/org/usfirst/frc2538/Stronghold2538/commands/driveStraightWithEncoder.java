@@ -65,7 +65,7 @@ public class driveStraightWithEncoder extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	Robot.driveSystem.stopDriving();
-    	RobotMap.driveSystemEncoder1.reset();
+    	//RobotMap.driveSystemEncoder1.reset();
     }
 
     // Called when another command which requires one or more of the same

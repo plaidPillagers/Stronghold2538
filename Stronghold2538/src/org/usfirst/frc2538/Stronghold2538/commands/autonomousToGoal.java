@@ -12,7 +12,9 @@
 package org.usfirst.frc2538.Stronghold2538.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc2538.Stronghold2538.Robot;
+import org.usfirst.frc2538.Stronghold2538.RobotMap;
 
 /**
  *
@@ -42,6 +44,7 @@ public class autonomousToGoal extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.driveSystem.setDistanceToGoal(distanceToGoal);
+    	RobotMap.driveSystemEncoder1.reset();
     	finished = false;
     }
 

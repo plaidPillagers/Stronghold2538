@@ -79,7 +79,7 @@ public class driveSystem extends Subsystem {
 		double throttle = driveJoystick.getZ() * (-.25) + .75;
 		SmartDashboard.putDouble("y", yValue);
 		SmartDashboard.putDouble("x", xValue);
-		SmartDashboard.putDouble("encoder value", encoder1.getDistance()*.876);
+		SmartDashboard.putDouble("encoder value", encoder1.getDistance()*.876 + 1);
 		//ultraDistance = ultrasonic.getAverageVoltage() / .0098;
 		//SmartDashboard.putDouble("ultraDistance", ultraDistance);
 		//getThrottle is actually getZ on madcats joystick
@@ -184,7 +184,7 @@ public class driveSystem extends Subsystem {
 		encoderDistance = encoder1.getDistance()*.876;
 		if (encoderDistance > distanceToTurn) {
 			SmartDashboard.putDouble("drivestraight encoder", encoderDistance);
-			robotDrive41.arcadeDrive(speed, 0.15);
+			robotDrive41.arcadeDrive(speed, .3);
 			return false;
 		}
 		else {

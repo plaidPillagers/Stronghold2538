@@ -49,19 +49,33 @@ public class AutonomousCommandGroup extends CommandGroup {
     	String input = Robot.prefs.getString("autoSpeed", "-.7");
     	double speed = Double.valueOf(input);
     	int driveTime = Robot.prefs.getInt("driveTime", 5);
-    	double angle = Robot.prefs.getDouble("angle", 60);
-    	double distanceBeforeTurn = Robot.prefs.getDouble("distanceBeforeTurn", -223);//215.8
+    	double angle = Robot.prefs.getDouble("angle", 57);
+    	double distanceBeforeTurn = Robot.prefs.getDouble("distanceBeforeTurn", -210);//215.8
     	double distanceToGoal = Robot.prefs.getDouble("distanceToGoal", -148); //130
-    	addSequential(new driveStraightWithEncoder(speed, distanceBeforeTurn), driveTime); //timed out for testing purposes only
-    	addSequential(new stopDriving(), 1);
+    	/*
+    	addSequential(new driveStraightWithEncoder(-.8, -180));
+    	addSequential(new stopDriving(), .1);
+    	*/
+    	addSequential(new driveStraightWithEncoder(speed, -110), 3); //timed out for testing purposes only
+    	addSequential(new stopDriving(), .25);
     	if (angle > 0) {
-    		addSequential(new turnRightGyro(angle), 5);	
+    		addSequential(new turnRightGyro(10), 1);	
     	}
     	else {
-    		addSequential(new turnLeftGyro(angle), 5);
+    		addSequential(new turnLeftGyro(-10), 1);
+    	}
+    	addSequential(new stopDriving(), .25);
+    	addSequential(new driveStraightWithEncoder(speed, distanceBeforeTurn), 3);
+    	addSequential(new stopDriving(), .25);
+    	if (angle > 0) {
+    		addSequential(new turnRightGyro(45), 3);	
+    	}
+    	else {
+    		addSequential(new turnLeftGyro(-45), 3);
     	}
     	
-    	addSequential(new stopDriving(), 1);
+    	addSequential(new stopDriving(), .25);
+    	addSequential(new resetGyro());
     		//addSequential(new driveStraight()); //uses ultrasonic sensor
     	addSequential(new autonomousToGoal(distanceToGoal), 3); //encoders, timed out for testing purposes only
     	//addSequential(new stopDriving(), 1.5);
