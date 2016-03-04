@@ -130,7 +130,7 @@ public class driveSystem extends Subsystem {
 		angle = gyro.getAngle();
 		SmartDashboard.putDouble("gyroTurnAngle", angle);
 		if (angle < rightTurnAngle) {
-			robotDrive41.arcadeDrive(0.0, .8);
+			robotDrive41.arcadeDrive(0.0, .9);
 			return false;
 		}
 		else {
@@ -145,7 +145,7 @@ public class driveSystem extends Subsystem {
 		SmartDashboard.putDouble("gyroTurnAngle", angle);
 		if (angle > leftTurnAngle) {
 			//check how to turn left
-			robotDrive41.arcadeDrive(0.0, -.8);
+			robotDrive41.arcadeDrive(0.0, -.9);
 			return false;
 		}
 		else {
@@ -184,7 +184,7 @@ public class driveSystem extends Subsystem {
 		encoderDistance = encoder1.getDistance()*.876;
 		if (encoderDistance > distanceToTurn) {
 			SmartDashboard.putDouble("drivestraight encoder", encoderDistance);
-			robotDrive41.arcadeDrive(speed, 0.0);
+			robotDrive41.arcadeDrive(speed, 0.15);
 			return false;
 		}
 		else {

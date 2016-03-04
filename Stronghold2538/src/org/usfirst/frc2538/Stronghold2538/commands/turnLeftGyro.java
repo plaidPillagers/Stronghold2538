@@ -43,7 +43,7 @@ public class turnLeftGyro extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.driveSystem.setLeftAngle(angle);
-    	Robot.driveSystem.resetGyro();
+    	//Robot.driveSystem.resetGyro();
     	finished = false;
     }
 

@@ -47,6 +47,7 @@ public class driveStraightWithEncoder extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.driveSystem.setDistanceBeforeTurn(distanceBeforeTurn);
+    	RobotMap.gyro.reset();
     	finished = false;
     }
 
