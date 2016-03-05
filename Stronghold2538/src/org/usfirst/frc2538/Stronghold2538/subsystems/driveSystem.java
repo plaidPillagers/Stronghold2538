@@ -172,7 +172,7 @@ public class driveSystem extends Subsystem {
 	public boolean autoGoalEncoders() {
 		encoderDistance = encoder1.getDistance()*.876;
 		if (encoderDistance > distanceToGoal) {
-			robotDrive41.arcadeDrive(-.65, 0.0);
+			robotDrive41.arcadeDrive(-.7, 0.0);
 			return false;
 		}
 		else {

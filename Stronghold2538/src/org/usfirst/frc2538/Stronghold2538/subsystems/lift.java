@@ -65,19 +65,21 @@ public class lift extends Subsystem {
 		//rightScissorRetracted = RobotMap.liftRightDown.get();
 		double speed = secondaryStick.getY();
 		if (speed > 0) {
-			if (rightScissorRetracted) {
+			/*
+			 * if (rightScissorRetracted) {
 				scissorsLeft.set(0.0);
 				scissorsLeft2.set(0.0);
 				scissorsRight.set(0.0);
 				scissorsRight2.set(0.0);
 				SmartDashboard.putString("scissors", "stopped");
 			} else {
+			*/
 				scissorsRight.set(-1.0);
 				scissorsRight2.set(-1.0);
 				scissorsLeft.set(-.95);
 				scissorsLeft2.set(-.95);
-			}
 		} else {
+			/*
 			if (rightScissorExtended) {
 				scissorsRight.set(0);
 				scissorsRight2.set(0);
@@ -85,11 +87,11 @@ public class lift extends Subsystem {
 				scissorsLeft2.set(0);
 				SmartDashboard.putString("scissors", "stopped2");
 			} else {
+			*/
 				scissorsRight.set(1.0);
 				scissorsRight2.set(1.0);
 				scissorsLeft.set(1.0);
 				scissorsLeft2.set(1.0);
-			}
 		}
 	}
 
@@ -99,24 +101,26 @@ public class lift extends Subsystem {
 		//leftScissorExtended = RobotMap.liftLeftUp.get();
 		//leftScissorRetracted = RobotMap.liftLeftDown.get();
 		if (yvalue > 0.0) {
+			/*
 			if (leftScissorExtended) {
 				scissorsLeft.set(0);
 				scissorsLeft2.set(0);
 			} 
 			else {
+			*/
 				scissorsLeft.set(-1.0);
 				scissorsLeft2.set(-1.0);
-			}
 		} 
 		else {
+			/*
 			if (leftScissorRetracted) {
 				scissorsLeft.set(0);
 				scissorsLeft2.set(0);
 			} 
 			else {
+			*/
 				scissorsLeft.set(1.0);
 				scissorsLeft2.set(1.0);
-			}
 		}
 	}
 
@@ -126,24 +130,26 @@ public class lift extends Subsystem {
 		//rightScissorExtended = RobotMap.liftRightUp.get();
 		//rightScissorRetracted = RobotMap.liftLeftDown.get();
 		if (yvalue > 0.0) {
+			/*
 			if (rightScissorExtended) {
 				scissorsRight.set(0);
 				scissorsRight2.set(0);
 			} 
 			else {
+			*/
 				scissorsRight.set(-1.0);
 				scissorsRight2.set(-1.0);
-			}
 		} 
 		else{
+			/*
 			if (rightScissorRetracted) {
 				scissorsRight.set(0);
 				scissorsRight2.set(0);
 			} 
 			else {
+			*/
 				scissorsRight.set(1.0);
 				scissorsRight2.set(1.0);
-			}
 		}
 	}
 
