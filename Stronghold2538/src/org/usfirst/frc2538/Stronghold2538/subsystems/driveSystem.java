@@ -23,6 +23,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.interfaces.Accelerometer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
@@ -73,6 +74,9 @@ public class driveSystem extends Subsystem {
 //    static RobotDrive drive;
 	public void arcadeDriveSystem(){
 		Joystick driveJoystick = Robot.oi.driveStick;
+		double yAccel = RobotMap.accelerometer.getY();
+		double zAccel = RobotMap.accelerometer.getZ();
+		
 		//encoderDistance = encoder1.getDistance();
 		double yValue = driveJoystick.getY();
 		double xValue = driveJoystick.getX();
@@ -80,8 +84,11 @@ public class driveSystem extends Subsystem {
 		SmartDashboard.putDouble("y", yValue);
 		SmartDashboard.putDouble("x", xValue);
 		SmartDashboard.putDouble("encoder value", encoder1.getDistance()*.876 + 1);
-		//ultraDistance = ultrasonic.getAverageVoltage() / .0098;
-		//SmartDashboard.putDouble("ultraDistance", ultraDistance);
+		ultraDistance = ultrasonic.getAverageVoltage() / .0098;
+		SmartDashboard.putDouble("ultraDistance", ultraDistance);
+		SmartDashboard.putDouble("ultraVoltage", ultrasonic.getVoltage());
+		SmartDashboard.putDouble("yAccel", yAccel);
+		SmartDashboard.putDouble("zAccel", zAccel);
 		//getThrottle is actually getZ on madcats joystick
 		robotDrive41.arcadeDrive((backwards(minimumTolerance(yValue)) * throttle), reverseTurn(minimumTolerance(xValue)) * throttle);
 		

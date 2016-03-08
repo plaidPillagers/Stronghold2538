@@ -94,5 +94,9 @@ public class BIM extends Subsystem {
     public void moveIn() {
     	bimRotation(.6);
     }
+    /*
+    public void limitswitch23(double speed) {
+    	
+    }*/
 }
 
