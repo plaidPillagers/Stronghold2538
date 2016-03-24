@@ -509,22 +509,6 @@ Children:
         value: *id012
     Base: Subsystem
     Name: arm
-  - Children: []
-    Properties:
-      Default command parameters: !!robotbuilder.data.properties.ParametersProperty
-        default: []
-        name: Default command parameters
-        validators: null
-        value: []
-      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: None}
-      Constants: !!robotbuilder.data.properties.ConstantsProperty
-        default: []
-        name: Constants
-        validators: null
-        value: []
-    Base: Subsystem
-    Name: RangeFinder
   Properties: {}
   Base: Subsystems
   Name: Subsystems
