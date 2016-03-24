@@ -77,15 +77,92 @@ public class AutonomousCommandGroup extends CommandGroup {
     	else {
     		addSequential(new turnLeftGyro(angle), 3);
     	}
-    	
     	addSequential(new stopDriving(), .25);
     	addSequential(new resetGyro());
-    		//addSequential(new driveStraight()); //uses ultrasonic sensor
-    	addSequential(new autonomousToGoal(distanceToGoal), 3); //encoders, timed out for testing purposes only
-    	//addSequential(new stopDriving(), 1.5);
+    			//addSequential(new driveStraight()); //uses ultrasonic sensor
+    		//addSequential(new autonomousToGoal(distanceToGoal), 3); //encoders, timed out for testing purposes only
+    		//addSequential(new stopDriving(), 1.5);
+    	addSequential(new AccelerometerShooting());
+    	addSequential(new bimOut(), .2);
     	addSequential(new autoBIMEject(), 1);
     	
     	//addSequential(new driveForwardNoSensors(), 5);
     	*/
+    	
+    	/*
+    	
+    	if (Robot.driveSystem.ultraDistance < 36) {
+    		addSequential(new driveStraightWithEncoder(-.7, -130), 3); //timed out for testing purposes only
+        	addSequential(new stopDriving(), .25);
+        	addSequential(new turnRightGyro(10), 1);	
+        	addSequential(new stopDriving(), .25);
+        	addSequential(new driveStraightWithEncoder(-.7, -219), 3);
+        	addSequential(new stopDriving(), .25);
+        	addSequential(new turnRightGyro(55), 3);	
+        	addSequential(new stopDriving(), .25);
+        	addSequential(new resetGyro());
+        	addSequential(new AccelerometerShooting());
+        	addSequential(new bimOut(), .2);
+        	addSequential(new autoBIMEject(), 1);
+		}
+    	else if (Robot.driveSystem.ultraDistance < 72 && Robot.driveSystem.ultraDistance > 36) {
+    		addSequential(new driveStraightWithEncoder(-.8, -130), 3); //timed out for testing purposes only
+        	addSequential(new stopDriving(), .25);
+        	addSequential(new turnLeftGyro(10), 1);
+        	addSequential(new turnRightGyro(10), 1);	
+        	addSequential(new stopDriving(), .25);
+        	addSequential(new driveStraightWithEncoder(-.7, -255), 3);
+        	addSequential(new stopDriving(), .25);
+        	addSequential(new turnRightGyro(55), 3);	
+        	addSequential(new stopDriving(), .25);
+        	addSequential(new resetGyro());
+        	addSequential(new AccelerometerShooting());
+        	addSequential(new bimOut(), .2);
+        	addSequential(new autoBIMEject(), 1);
+		}
+    	else if (Robot.driveSystem.ultraDistance > 72 && Robot.driveSystem.ultraDistance < 108) {
+    		addSequential(new driveStraightWithEncoder(-.8, -130), 3); //timed out for testing purposes only
+        	addSequential(new stopDriving(), .25);
+         	addSequential(new turnLeftGyro(10), 1);
+        	addSequential(new turnRightGyro(10), 1);	
+        	addSequential(new stopDriving(), .25);
+        	addSequential(new driveStraightWithEncoder(-.7, -280), 3);
+        	addSequential(new stopDriving(), .25);
+        	addSequential(new turnRightGyro(55), 3);	
+        	addSequential(new stopDriving(), .25);
+        	addSequential(new resetGyro());
+        	addSequential(new AccelerometerShooting());
+        	addSequential(new bimOut(), .2);
+        	addSequential(new autoBIMEject(), 1);
+		}
+    	else if (Robot.driveSystem.ultraDistance > 108 && Robot.driveSystem.ultraDistance < 144) {
+    		addSequential(new driveStraightWithEncoder(-.8, -180));
+        	addSequential(new stopDriving(), .1);
+        	addSequential(new driveForwardNoSensors(), 3);
+        	addSequential(new stopDriving());
+		}
+    	else if (Robot.driveSystem.ultraDistance > 144 && Robot.driveSystem.ultraDistance < 180) {
+    		addSequential(new driveStraightWithEncoder(-.8, -130), 3); //timed out for testing purposes only
+        	addSequential(new stopDriving(), .25);
+        	addSequential(new turnRightGyro(-10), 1);
+        	addSequential(new turnLeftGyro(-10), 1);
+        	addSequential(new stopDriving(), .25);
+        	addSequential(new driveStraightWithEncoder(-.7, -270), 3);
+        	addSequential(new stopDriving(), .25);
+        	addSequential(new turnLeftGyro(-55), 3);
+        	addSequential(new stopDriving(), .25);
+        	addSequential(new resetGyro());
+        	addSequential(new AccelerometerShooting());
+        	addSequential(new bimOut(), .2);
+        	addSequential(new autoBIMEject(), 1);
+		}
+    	else {
+    		addSequential(new driveStraightWithEncoder(-.8, -180));
+        	addSequential(new stopDriving(), .1);
+        	addSequential(new driveForwardNoSensors(), 3);
+        	addSequential(new stopDriving());
+		}
+		*/
     } 
+    
 }
