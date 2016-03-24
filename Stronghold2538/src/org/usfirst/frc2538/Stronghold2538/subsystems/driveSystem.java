@@ -215,7 +215,7 @@ public class driveSystem extends Subsystem {
 	}
 	public boolean accelerometerToGoal() {
 		accelerometerZ = accelerometer.getZ();
-		if (accelerometerZ <= 1.1) {
+		if (accelerometerZ <= 1.01) {
 			driveForward();
 			return false;
 		}
