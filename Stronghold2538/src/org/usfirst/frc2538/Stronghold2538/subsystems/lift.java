@@ -61,7 +61,7 @@ public class lift extends Subsystem {
 
 	public void scissorsLift() {
 		Joystick secondaryStick = Robot.oi.secondaryStick;
-		//rightScissorExtended = RobotMap.liftRightUp.get();
+		rightScissorExtended = !RobotMap.liftRightUp.get();
 		//rightScissorRetracted = RobotMap.liftRightDown.get();
 		double speed = secondaryStick.getY();
 		if (speed > 0) {
@@ -79,7 +79,7 @@ public class lift extends Subsystem {
 				scissorsLeft.set(-.95);
 				scissorsLeft2.set(-.95);
 		} else {
-			/*
+			
 			if (rightScissorExtended) {
 				scissorsRight.set(0);
 				scissorsRight2.set(0);
@@ -87,29 +87,31 @@ public class lift extends Subsystem {
 				scissorsLeft2.set(0);
 				SmartDashboard.putString("scissors", "stopped2");
 			} else {
-			*/
+			
 				scissorsRight.set(1.0);
 				scissorsRight2.set(1.0);
 				scissorsLeft.set(1.0);
 				scissorsLeft2.set(1.0);
+			}
 		}
 	}
 
 	public void leftScissors() {
 		Joystick secondaryStick = Robot.oi.secondaryStick;
 		double yvalue = secondaryStick.getY();
-		//leftScissorExtended = RobotMap.liftLeftUp.get();
+		leftScissorExtended = !RobotMap.liftLeftUp.get();
 		//leftScissorRetracted = RobotMap.liftLeftDown.get();
-		if (yvalue > 0.0) {
-			/*
+		if (yvalue < 0.0) {
+			
 			if (leftScissorExtended) {
 				scissorsLeft.set(0);
 				scissorsLeft2.set(0);
 			} 
 			else {
-			*/
-				scissorsLeft.set(-1.0);
-				scissorsLeft2.set(-1.0);
+			
+				scissorsLeft.set(1.0);
+				scissorsLeft2.set(1.0);
+			}
 		} 
 		else {
 			/*
@@ -119,26 +121,27 @@ public class lift extends Subsystem {
 			} 
 			else {
 			*/
-				scissorsLeft.set(1.0);
-				scissorsLeft2.set(1.0);
+				scissorsLeft.set(-1.0);
+				scissorsLeft2.set(-1.0);
 		}
 	}
 
 	public void rightScissors() {
 		Joystick secondaryStick = Robot.oi.secondaryStick;
 		double yvalue = secondaryStick.getY();
-		//rightScissorExtended = RobotMap.liftRightUp.get();
+		rightScissorExtended = !RobotMap.liftRightUp.get();
 		//rightScissorRetracted = RobotMap.liftLeftDown.get();
-		if (yvalue > 0.0) {
-			/*
+		if (yvalue < 0.0) {
+			
 			if (rightScissorExtended) {
 				scissorsRight.set(0);
 				scissorsRight2.set(0);
 			} 
 			else {
-			*/
-				scissorsRight.set(-1.0);
-				scissorsRight2.set(-1.0);
+			
+				scissorsRight.set(1.0);
+				scissorsRight2.set(1.0);
+			}
 		} 
 		else{
 			/*
@@ -148,8 +151,8 @@ public class lift extends Subsystem {
 			} 
 			else {
 			*/
-				scissorsRight.set(1.0);
-				scissorsRight2.set(1.0);
+				scissorsRight.set(-1.0);
+				scissorsRight2.set(-1.0);
 		}
 	}
 
@@ -159,4 +162,30 @@ public class lift extends Subsystem {
 		}
 		return magnitude;
 	}
+	
+	public void scissorsUp() {
+		rightScissorExtended = !RobotMap.liftRightUp.get();
+		leftScissorExtended = !RobotMap.liftLeftUp.get();
+		if(rightScissorExtended ) {
+			scissorsLeft. set(0);
+			scissorsLeft2.set(0); 
+			scissorsRight.set(0);
+			scissorsRight2 .set(0);
+		}
+		else {
+			scissorsRight.set(.5);
+			scissorsRight2.set(.5);
+			scissorsLeft.set(.5);
+			scissorsLeft2.set(.5);
+		}	
+	}
+	
+		public void scissorsDown() {
+			scissorsRight.set(-.5);
+			scissorsRight2.set(-.5);
+			scissorsLeft.set(-.5);
+			scissorsLeft2.set(-.5);
+		}
+	
+	
 }

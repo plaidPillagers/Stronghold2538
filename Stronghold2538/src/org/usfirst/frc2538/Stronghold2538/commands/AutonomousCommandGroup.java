@@ -50,41 +50,46 @@ public class AutonomousCommandGroup extends CommandGroup {
     	String input = Robot.prefs.getString("autoSpeed", "-.7");
     	double speed = Double.valueOf(input);
     	int driveTime = Robot.prefs.getInt("driveTime", 5);
-    	double angle = Robot.prefs.getDouble("angle", 53);
+    	double angle = Robot.prefs.getDouble("angle", 53.5);
     	double distanceBeforeTurn = Robot.prefs.getDouble("distanceBeforeTurn", -219);//215.8
     	double distanceToGoal = Robot.prefs.getDouble("distanceToGoal", -148); //130
-    	/*
-    	addSequential(new driveStraightWithEncoder(-.8, -180));
-    	addSequential(new stopDriving(), .1);
-    	addSequential(new driveForwardNoSensors(), 3);
-    	addSequential(new stopDriving());
-    	*/
     	
-    	addSequential(new driveStraightWithEncoder(-.7, -140), 5); //timed out for testing purposes only
-    	addSequential(new stopDriving(), .25);
+    	/*
+    	addSequential(new driveStraightWithEncoder(-.7, -140), 5);
+    	addSequential(new stopDriving(), .1);
+    	*/
+    	//addSequential(new driveForwardNoSensors(), 2);
+    	//addSequential(new stopDriving());
+    	
+    	
+    	addSequential(new driveStraightWithEncoder(-.7, -130), 2.5); //timed out for testing purposes only
+    	addSequential(new stopDriving(), .2);
     	if (angle > 0) {
     		addSequential(new turnRightGyro(10), 1);	
     	}
     	else {
     		addSequential(new turnLeftGyro(-10), 1);
     	}
-    	addSequential(new stopDriving(), .25);
-    	addSequential(new driveStraightWithEncoder(-.7, distanceBeforeTurn), 3);
-    	addSequential(new stopDriving(), .25);
+    	addSequential(new stopDriving(), .2);
+    	addSequential(new driveStraightWithEncoder(-.7, distanceBeforeTurn), 1.7);
+    	addSequential(new stopDriving(), .2);
     	if (angle > 0) {
     		addSequential(new turnRightGyro(angle), 3);	
     	}
     	else {
     		addSequential(new turnLeftGyro(angle), 3);
     	}
-    	addSequential(new stopDriving(), .25);
+    	addSequential(new stopDriving(), .2);
     	addSequential(new resetGyro());
     			//addSequential(new driveStraight()); //uses ultrasonic sensor
     		addSequential(new autonomousToGoal(distanceToGoal), 3); //encoders, timed out for testing purposes only
     		//addSequential(new stopDriving(), 1.5);
     	//addSequential(new AccelerometerShooting());
-    	//addSequential(new bimOut(), .1);
-    	addSequential(new autoBIMEject(), 1);
+    	addSequential(new bimOut(), .8);
+    	addParallel(new driveForwardNoSensors(), .8);
+    	addParallel(new autoBIMEject(), 1);
+    	//addSequential(new driveForwardNoSensors(), 1);
+    	
     	
     	//addSequential(new driveForwardNoSensors(), 5);
     	

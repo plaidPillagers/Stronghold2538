@@ -54,7 +54,7 @@ public class Robot extends IterativeRobot {
     
     public Robot() {
         server = CameraServer.getInstance();
-        server.setQuality(50);
+        server.setQuality(45);
         //the camera name (ex "cam0") can be found through the roborio web interface
         server.startAutomaticCapture("cam0");
     }

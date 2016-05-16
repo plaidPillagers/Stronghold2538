@@ -11,10 +11,14 @@
 
 package org.usfirst.frc2538.Stronghold2538.subsystems;
 
+import org.ietf.jgss.Oid;
+import org.usfirst.frc2538.Stronghold2538.OI;
+import org.usfirst.frc2538.Stronghold2538.Robot;
 import org.usfirst.frc2538.Stronghold2538.RobotMap;
 import org.usfirst.frc2538.Stronghold2538.commands.*;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
@@ -93,6 +97,18 @@ public class BIM extends Subsystem {
     }
     public void moveIn() {
     	bimRotation(.6);
+    }
+    
+    public void joystickControl() {
+    	Joystick secondaryStick = Robot.oi.secondaryStick;
+    	double yValue = secondaryStick.getY();
+    	if (yValue < 0) {
+			bimRotation(-.2);
+		}
+    	else {
+			bimRotation(.6);
+		}
+    	
     }
     /*
     public void limitswitch23(double speed) {

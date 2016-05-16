@@ -58,7 +58,7 @@ public class driveSystem extends Subsystem {
    public double distanceToGoal = -130;
    public double distanceToTurn = -215.8;
    public double ultraDistance = 0;
-   public double accelerometerZ;
+   public double accelerometerY;
   
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -79,7 +79,7 @@ public class driveSystem extends Subsystem {
 		double yAccel = RobotMap.accelerometer.getY();
 		double zAccel = RobotMap.accelerometer.getZ();
 		
-		//encoderDistance = encoder1.getDistance();
+		encoderDistance = encoder1.getDistance();
 		double yValue = driveJoystick.getY();
 		double xValue = driveJoystick.getX();
 		double throttle = driveJoystick.getZ() * (-.25) + .75;
@@ -176,7 +176,7 @@ public class driveSystem extends Subsystem {
 		robotDrive41.arcadeDrive(0.0, 0.0);
 	}
 	public void driveForward() {
-		robotDrive41.arcadeDrive(.6, 0.0);
+		robotDrive41.arcadeDrive(-.6, 0.0);
 	}
 	public boolean autoGoalEncoders() {
 		encoderDistance = encoder1.getDistance()*.876;
@@ -214,8 +214,8 @@ public class driveSystem extends Subsystem {
 		
 	}
 	public boolean accelerometerToGoal() {
-		accelerometerZ = accelerometer.getZ();
-		if (accelerometerZ <= 1.01) {
+		accelerometerY = accelerometer.getY();
+		if (accelerometerY <= .1) {
 			driveForward();
 			return false;
 		}
